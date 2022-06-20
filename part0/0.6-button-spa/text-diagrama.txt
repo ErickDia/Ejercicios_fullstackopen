@@ -1,0 +1,25 @@
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: spa.html
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: main.js
+
+note over browser:
+el navegador comienza a ejecutar el codigo js
+que solicita datos JSON del servidor
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+el navegador ejecuta el controlador de eventos
+que hace que las notas se muestren
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa {content: "hello", date: "2022-06-20T04:08:44.688Z"}
+note over server:
+llegan los datos enviados desde el navegador 
+y se agregan a la lista de notas
+end note
